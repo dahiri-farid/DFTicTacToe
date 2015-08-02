@@ -16,6 +16,11 @@
 @property (nonatomic, strong)   IBOutlet    NSLayoutConstraint* ncTopGameSpace;
 @property (nonatomic, strong)   IBOutlet    NSLayoutConstraint* ncBottomGameSpace;
 
+@property (nonatomic, strong)               NSLayoutConstraint* ncCenterXGame;
+@property (nonatomic, strong)               NSLayoutConstraint* ncCenterYGame;
+
+@property (nonatomic, strong)   IBOutlet    UIView*             gridView;
+
 @property (nonatomic, strong)               DFGameController*   gameController;
 
 @end
@@ -26,6 +31,25 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.gameController = [DFGameController controllerWithGameType:self.gameType];
+    
+    self.ncCenterYGame =
+    [NSLayoutConstraint constraintWithItem:self.gridView
+                                 attribute:NSLayoutAttributeCenterY
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:self.view
+                                 attribute:NSLayoutAttributeCenterY
+                                multiplier:1.0f
+                                  constant:0.0f];
+    
+    
+    self.ncCenterXGame =
+    [NSLayoutConstraint constraintWithItem:self.gridView
+                                 attribute:NSLayoutAttributeCenterX
+                                 relatedBy:NSLayoutRelationEqual
+                                    toItem:self.view
+                                 attribute:NSLayoutAttributeCenterX
+                                multiplier:1.0f
+                                  constant:0.0f];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -48,15 +72,24 @@
 
 - (void)updateGameViewContraintsWithSize:(CGSize)aSize
 {
-    [self.view removeConstraints:@[self.ncLeadingGameSpace, self.ncTrailingGameSpace, self.ncTopGameSpace, self.ncBottomGameSpace]];
+    [self.view removeConstraints:@[self.ncLeadingGameSpace,
+                                   self.ncTrailingGameSpace,
+                                   self.ncTopGameSpace,
+                                   self.ncBottomGameSpace,
+                                   self.ncCenterXGame,
+                                   self.ncCenterYGame]];
     
     if (aSize.width > aSize.height)
     {
         [self.view addConstraints:@[self.ncTopGameSpace, self.ncBottomGameSpace]];
+        
+        [self.view addConstraint:self.ncCenterXGame];
     }
     else
     {
         [self.view addConstraints:@[self.ncLeadingGameSpace, self.ncTrailingGameSpace]];
+        
+        [self.view addConstraint:self.ncCenterYGame];
     }
 }
 
