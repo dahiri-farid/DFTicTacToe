@@ -104,17 +104,17 @@
                         <viewControllerLayoutGuide type="bottom" id="Kne-iq-rkZ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="9hu-1i-hDq">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="556"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZLM-Y8-8ID">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="22" y="0.0" width="556" height="556"/>
                                 <subviews>
                                     <view tag="100" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TCh-nu-PUh">
-                                        <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="185" height="185"/>
                                         <subviews>
                                             <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VVI-zf-ngq">
-                                                <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="185" height="185"/>
                                                 <state key="normal" title="Button">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -132,10 +132,10 @@
                                         </constraints>
                                     </view>
                                     <view tag="101" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MWZ-ba-km4">
-                                        <rect key="frame" x="200" y="0.0" width="200" height="200"/>
+                                        <rect key="frame" x="185" y="0.0" width="186" height="185"/>
                                         <subviews>
                                             <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YOp-3F-ddt">
-                                                <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="186" height="185"/>
                                                 <state key="normal" title="Button">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -153,10 +153,10 @@
                                         </constraints>
                                     </view>
                                     <view tag="102" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zJm-pg-jv5">
-                                        <rect key="frame" x="400" y="0.0" width="200" height="200"/>
+                                        <rect key="frame" x="371" y="0.0" width="185" height="185"/>
                                         <subviews>
                                             <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="x1C-Eu-d9H">
-                                                <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="185" height="185"/>
                                                 <state key="normal" title="Button">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -174,10 +174,10 @@
                                         </constraints>
                                     </view>
                                     <view tag="103" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uSk-Mg-Jhm">
-                                        <rect key="frame" x="0.0" y="200" width="200" height="200"/>
+                                        <rect key="frame" x="0.0" y="185" width="185" height="186"/>
                                         <subviews>
                                             <button opaque="NO" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SsE-yg-6xR">
-                                                <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="185" height="186"/>
                                                 <state key="normal" title="Button">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -195,10 +195,10 @@
                                         </constraints>
                                     </view>
                                     <view tag="104" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7DS-Pg-2df">
-                                        <rect key="frame" x="200" y="200" width="200" height="200"/>
+                                        <rect key="frame" x="185" y="185" width="186" height="186"/>
                                         <subviews>
                                             <button opaque="NO" tag="104" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nHv-Py-oCy">
-                                                <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="186" height="186"/>
                                                 <state key="normal" title="Button">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -216,10 +216,10 @@
                                         </constraints>
                                     </view>
                                     <view tag="105" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ltf-4N-R8Z">
-                                        <rect key="frame" x="400" y="200" width="200" height="200"/>
+                                        <rect key="frame" x="371" y="185" width="185" height="186"/>
                                         <subviews>
                                             <button opaque="NO" tag="105" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GxF-tk-7QM">
-                                                <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="185" height="186"/>
                                                 <state key="normal" title="Button">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -237,10 +237,10 @@
                                         </constraints>
                                     </view>
                                     <view tag="106" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rli-r1-uQc">
-                                        <rect key="frame" x="0.0" y="400" width="200" height="200"/>
+                                        <rect key="frame" x="0.0" y="371" width="185" height="185"/>
                                         <subviews>
                                             <button opaque="NO" tag="106" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lhw-Ze-fds">
-                                                <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="185" height="185"/>
                                                 <state key="normal" title="Button">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -258,10 +258,10 @@
                                         </constraints>
                                     </view>
                                     <view tag="107" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fSV-yW-JDp">
-                                        <rect key="frame" x="200" y="400" width="200" height="200"/>
+                                        <rect key="frame" x="185" y="371" width="186" height="185"/>
                                         <subviews>
                                             <button opaque="NO" tag="107" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oQ6-Gw-qEv">
-                                                <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="186" height="185"/>
                                                 <state key="normal" title="Button">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -279,10 +279,10 @@
                                         </constraints>
                                     </view>
                                     <view tag="108" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XoM-88-MAW">
-                                        <rect key="frame" x="400" y="400" width="200" height="200"/>
+                                        <rect key="frame" x="371" y="371" width="185" height="185"/>
                                         <subviews>
                                             <button opaque="NO" tag="108" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GYD-lL-AcN">
-                                                <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="185" height="185"/>
                                                 <state key="normal" title="Button">
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
@@ -348,19 +348,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="ZLM-Y8-8ID" secondAttribute="trailing" constant="-16" id="Qrq-Mv-IrW"/>
-                            <constraint firstItem="ZLM-Y8-8ID" firstAttribute="leading" secondItem="9hu-1i-hDq" secondAttribute="leadingMargin" constant="-16" id="UJN-v9-ace"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ZLM-Y8-8ID" secondAttribute="trailing" constant="6" id="O80-Iy-T4k"/>
+                            <constraint firstItem="ZLM-Y8-8ID" firstAttribute="leading" secondItem="9hu-1i-hDq" secondAttribute="leadingMargin" constant="6" id="hzT-WC-mx4"/>
                             <constraint firstItem="ZLM-Y8-8ID" firstAttribute="top" secondItem="9hu-1i-hDq" secondAttribute="topMargin" id="lkP-Yu-u5d"/>
                             <constraint firstItem="Kne-iq-rkZ" firstAttribute="top" secondItem="ZLM-Y8-8ID" secondAttribute="bottom" id="lx8-0q-i5v"/>
                         </constraints>
                     </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="y7c-Lu-q11"/>
                     <connections>
                         <outlet property="gridView" destination="ZLM-Y8-8ID" id="zSk-Bj-4X0"/>
                         <outlet property="ncBottomGameSpace" destination="lx8-0q-i5v" id="Lm2-Yr-uv9"/>
-                        <outlet property="ncLeadingGameSpace" destination="UJN-v9-ace" id="bCe-m1-wyn"/>
+                        <outlet property="ncLeadingGameSpace" destination="hzT-WC-mx4" id="PGq-Wn-M25"/>
                         <outlet property="ncTopGameSpace" destination="lkP-Yu-u5d" id="Pat-dF-K3T"/>
-                        <outlet property="ncTrailingGameSpace" destination="Qrq-Mv-IrW" id="aQN-Lh-WDs"/>
+                        <outlet property="ncTrailingGameSpace" destination="O80-Iy-T4k" id="1ig-Zi-MBh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="crp-wB-0pp" userLabel="First Responder" sceneMemberID="firstResponder"/>

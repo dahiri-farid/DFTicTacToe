@@ -87,6 +87,8 @@
     }
     else
     {
+        self.ncLeadingGameSpace.constant = -16.0f;
+        self.ncTrailingGameSpace.constant = -16.0f;
         [self.view addConstraints:@[self.ncLeadingGameSpace, self.ncTrailingGameSpace]];
         
         [self.view addConstraint:self.ncCenterYGame];
