@@ -8,6 +8,7 @@
 
 #import "DFGameViewController.h"
 #import "DFGameController.h"
+#import "DFGrid.h"
 
 @interface DFGameViewController ()
 
@@ -22,15 +23,18 @@
 @property (nonatomic, strong)   IBOutlet    UIView*             gridView;
 
 @property (nonatomic, strong)               DFGameController*   gameController;
+@property (nonatomic, strong)               DFGrid*             gridModel;
 
 @end
 
 @implementation DFGameViewController
 
-- (void)viewDidLoad {
+- (void)viewDidLoad
+{
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     self.gameController = [DFGameController controllerWithGameType:self.gameType];
+    self.gridModel      = DFGrid.new;
     
     self.ncCenterYGame =
     [NSLayoutConstraint constraintWithItem:self.gridView
@@ -65,7 +69,8 @@
     [super viewWillLayoutSubviews];
 }
 
-- (void)didReceiveMemoryWarning {
+- (void)didReceiveMemoryWarning
+{
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
@@ -132,7 +137,52 @@
 
 - (IBAction)didPressOnGrid:(UIButton *)sender
 {
-    [sender setTitle:@"X" forState:UIControlStateNormal];
+    [self.gridModel putGridValue:self.gameController.currentGridValue
+                         atIndex:[self gridIDFromButtonTag:sender.tag]];
+    
+    if (self.gameController.currentGridValue == DFGridValueX)
+    {
+        [sender setTitle:@"X" forState:UIControlStateNormal];
+    }
+    else
+    {
+        [sender setTitle:@"O" forState:UIControlStateNormal];
+    }
+    [self.gameController toggleGridValue];
+    sender.userInteractionEnabled = NO;
+    
+    if (self.gridModel.isWinnerX)
+    {
+        [self showAlertControllerWithTitle:@"Victory" message:@"X wins"];
+    }
+    else if (self.gridModel.isWinnerY)
+    {
+        [self showAlertControllerWithTitle:@"Victory" message:@"O wins"];
+    }
+}
+
+- (NSUInteger)gridIDFromButtonTag:(NSUInteger)aButtonTag
+{
+    return aButtonTag - 100;
+}
+
+- (void)showAlertControllerWithTitle:(NSString *)aTitle message:(NSString *)aMessage
+{
+    __weak typeof (self)weakSelf = self;
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:aTitle
+                                                                   message:aMessage
+                                                            preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction* action =
+    [UIAlertAction actionWithTitle:@"Ok"
+                             style:UIAlertActionStyleCancel
+                           handler:^(UIAlertAction *action)
+     {
+         [weakSelf dismissViewControllerAnimated:alert completion:nil];
+     }];
+    [alert addAction:action];
+    
+    [self presentViewController:alert animated:YES completion:nil];
 }
 
 @end

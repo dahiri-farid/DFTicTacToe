@@ -11,6 +11,7 @@
 @interface DFGameController ()
 
 @property (nonatomic, assign, readwrite)    DFGameType  gameType;
+@property (nonatomic, assign, readwrite)    DFGridValueType currentGridValue;
 
 @end
 
@@ -27,8 +28,21 @@
     if (self)
     {
         self.gameType = aGameType;
+        self.currentGridValue = DFGridValueX;
     }
     return self;
+}
+
+- (void)toggleGridValue
+{
+    if (self.currentGridValue == DFGridValueX)
+    {
+        self.currentGridValue = DFGridValueO;
+    }
+    else
+    {
+        self.currentGridValue = DFGridValueX;
+    }
 }
 
 - (NSString *)gameTitle

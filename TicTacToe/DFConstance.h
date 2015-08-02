@@ -15,6 +15,13 @@ typedef NS_ENUM(NSUInteger, DFGameType)
     DFGameAIVsHuman,
 };
 
+typedef NS_ENUM(NSUInteger, DFGridValueType)
+{
+    DFGridValueEmpty,
+    DFGridValueX,
+    DFGridValueO,
+};
+
 @interface DFConstance : NSObject
 
 @end

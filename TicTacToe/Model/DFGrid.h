@@ -8,18 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-typedef NS_ENUM(NSUInteger, DFGridValueType)
-{
-    DFGridValueEmpty,
-    DFGridValueX,
-    DFGridValueO,
-};
-
 @interface DFGrid : NSObject
 
 - (DFGridValueType)gridValueAtIndex:(NSUInteger)aIndex;
 - (void)putGridValue:(DFGridValueType)aValue atIndex:(NSUInteger)aIndex;
 - (void)makeBestMoveForValue:(DFGridValueType)aValue;
 - (BOOL)isGridEmpty;
+- (BOOL)isWinnerX;
+- (BOOL)isWinnerY;
 
 @end

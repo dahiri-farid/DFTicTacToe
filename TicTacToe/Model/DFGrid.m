@@ -96,14 +96,20 @@
 
 - (BOOL)isWinner:(DFGridValueType)aValue
 {
+    NSUInteger matchesCount = 0;
     for (NSArray* solution in self.solutions)
     {
-        DFGridValueType firtValue = [solution[0] integerValue];
-        DFGridValueType secondValue = [solution[1] integerValue];
-        DFGridValueType thirdValue = [solution[2] integerValue];
-        
-        if (firtValue == secondValue == thirdValue == aValue)
+        for (NSNumber* index in solution)
+        {
+            DFGridValueType valueType = [self.gridValues[index.integerValue] integerValue];
+            
+            if (valueType == aValue)
+                ++matchesCount;
+        }
+        if (matchesCount == self.sideLength)
             return YES;
+        else
+            matchesCount = 0;
     }
     return NO;
 }
