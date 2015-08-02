@@ -38,6 +38,9 @@
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="byK-s1-6wj" kind="presentation" id="UZk-CY-de2"/>
+                                </connections>
                             </button>
                             <button opaque="NO" tag="124" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TZ8-ZR-YwI">
                                 <rect key="frame" x="300" y="0.0" width="300" height="300"/>
@@ -47,6 +50,9 @@
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="byK-s1-6wj" kind="presentation" id="KVz-AT-jfI"/>
+                                </connections>
                             </button>
                             <button opaque="NO" tag="126" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q6A-0a-CmW">
                                 <rect key="frame" x="300" y="300" width="300" height="300"/>
@@ -391,6 +397,11 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="38X-fa-qDW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.72336632010000002" green="1" blue="0.72336632010000002" alpha="1" colorSpace="deviceRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="18"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -402,4 +413,7 @@
             <point key="canvasLocation" x="1000" y="287"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="byQ-Eo-oxo"/>
+    </inferredMetricsTieBreakers>
 </document>

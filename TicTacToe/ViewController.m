@@ -56,34 +56,25 @@ static const NSUInteger kDFAboutButtonTag          = 126;
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(UIButton *)sender
 {
-    // Make sure your segue name in storyboard is the same as this line
-    if ([[segue identifier] isEqualToString:@"YOUR_SEGUE_NAME_HERE"])
+    if (sender.tag == kDFHumanVsHumanButtonTag)
     {
-        // Get reference to the destination view controller
-        //        YourViewController *vc = [segue destinationViewController];
-        //
-        //        // Pass any objects to the view controller here, like...
-        //        [vc setMyObjectHere:object];
-        if (sender.tag == kDFHumanVsHumanButtonTag)
-        {
-            DFGameViewController* gameVC = segue.destinationViewController;
-            gameVC.gameType = DFGameHumavVsHuman;
-        }
-        else if (sender.tag == kDFHumanVsAIButtonTag)
-        {
-            DFGameViewController* gameVC = segue.destinationViewController;
-            gameVC.gameType = DFGameHumanVsAI;
-        }
-        else if (sender.tag == kDFAIVsHumanButtonTag)
-        {
-            DFGameViewController* gameVC = segue.destinationViewController;
-            gameVC.gameType = DFGameAIVsHuman;
-        }
-//        else if (sender.tag == kDFAboutButtonTag)
-//        {
-//            
-//        }
+        DFGameViewController* gameVC = ((UINavigationController *)segue.destinationViewController).viewControllers[0];
+        gameVC.gameType = DFGameHumavVsHuman;
     }
+    else if (sender.tag == kDFHumanVsAIButtonTag)
+    {
+        DFGameViewController* gameVC = ((UINavigationController *)segue.destinationViewController).viewControllers[0];
+        gameVC.gameType = DFGameHumanVsAI;
+    }
+    else if (sender.tag == kDFAIVsHumanButtonTag)
+    {
+        DFGameViewController* gameVC = ((UINavigationController *)segue.destinationViewController).viewControllers[0];
+        gameVC.gameType = DFGameAIVsHuman;
+    }
+    //        else if (sender.tag == kDFAboutButtonTag)
+    //        {
+    //
+    //        }
 }
 
 @end
