@@ -7,6 +7,7 @@
 //
 
 #import "DFGameViewController.h"
+#import "DFGameController.h"
 
 @interface DFGameViewController ()
 
@@ -15,6 +16,8 @@
 @property (nonatomic, strong)   IBOutlet    NSLayoutConstraint* ncTopGameSpace;
 @property (nonatomic, strong)   IBOutlet    NSLayoutConstraint* ncBottomGameSpace;
 
+@property (nonatomic, strong)               DFGameController*   gameController;
+
 @end
 
 @implementation DFGameViewController
@@ -22,11 +25,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    self.gameController = [DFGameController controllerWithGameType:self.gameType];
 }
 
 - (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
+    self.title = self.gameController.gameTitle;
     
     [self updateGameViewContraintsWithSize:self.view.bounds.size];
 }
@@ -87,5 +92,12 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+#pragma mark - User Interaction
+
+- (IBAction)didPressOnGrid:(UIButton *)sender
+{
+    [sender setTitle:@"X" forState:UIControlStateNormal];
+}
 
 @end

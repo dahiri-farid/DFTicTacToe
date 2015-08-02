@@ -16,6 +16,8 @@
 		47F29BF41B6D3B89006B886B /* TicTacToeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 47F29BF31B6D3B89006B886B /* TicTacToeTests.m */; };
 		47F29BFF1B6D4464006B886B /* DFGameViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47F29BFE1B6D4464006B886B /* DFGameViewController.m */; };
 		47F29C031B6D44E9006B886B /* DFConstance.m in Sources */ = {isa = PBXBuildFile; fileRef = 47F29C021B6D44E9006B886B /* DFConstance.m */; };
+		47F29C081B6E0170006B886B /* DFGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = 47F29C071B6E0170006B886B /* DFGrid.m */; };
+		47F29C0B1B6E1AE3006B886B /* DFGameController.m in Sources */ = {isa = PBXBuildFile; fileRef = 47F29C0A1B6E1AE3006B886B /* DFGameController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +49,10 @@
 		47F29C011B6D44E9006B886B /* DFConstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFConstance.h; sourceTree = "<group>"; };
 		47F29C021B6D44E9006B886B /* DFConstance.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFConstance.m; sourceTree = "<group>"; };
 		47F29C041B6D4573006B886B /* DFTicTacToe.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DFTicTacToe.h; sourceTree = "<group>"; };
+		47F29C061B6E0170006B886B /* DFGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGrid.h; sourceTree = "<group>"; };
+		47F29C071B6E0170006B886B /* DFGrid.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFGrid.m; sourceTree = "<group>"; };
+		47F29C091B6E1AE3006B886B /* DFGameController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DFGameController.h; sourceTree = "<group>"; };
+		47F29C0A1B6E1AE3006B886B /* DFGameController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DFGameController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +94,7 @@
 		47F29BD61B6D3B89006B886B /* TicTacToe */ = {
 			isa = PBXGroup;
 			children = (
+				47F29C051B6E015D006B886B /* Model */,
 				47F29BDB1B6D3B89006B886B /* AppDelegate.h */,
 				47F29BDC1B6D3B89006B886B /* AppDelegate.m */,
 				47F29BDE1B6D3B89006B886B /* ViewController.h */,
@@ -129,6 +136,17 @@
 				47F29BF21B6D3B89006B886B /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		47F29C051B6E015D006B886B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				47F29C061B6E0170006B886B /* DFGrid.h */,
+				47F29C071B6E0170006B886B /* DFGrid.m */,
+				47F29C091B6E1AE3006B886B /* DFGameController.h */,
+				47F29C0A1B6E1AE3006B886B /* DFGameController.m */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,6 +250,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				47F29C031B6D44E9006B886B /* DFConstance.m in Sources */,
+				47F29C0B1B6E1AE3006B886B /* DFGameController.m in Sources */,
+				47F29C081B6E0170006B886B /* DFGrid.m in Sources */,
 				47F29BFF1B6D4464006B886B /* DFGameViewController.m in Sources */,
 				47F29BE01B6D3B89006B886B /* ViewController.m in Sources */,
 				47F29BDD1B6D3B89006B886B /* AppDelegate.m in Sources */,

@@ -10,4 +10,6 @@
 
 @interface DFGameViewController : UIViewController
 
+@property (nonatomic, assign) DFGameType    gameType;
+
 @end

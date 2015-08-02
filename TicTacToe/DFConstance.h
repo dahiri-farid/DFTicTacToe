@@ -8,9 +8,12 @@
 
 #import <Foundation/Foundation.h>
 
-static const NSInteger kDFHumanVsHumanButtonTag   = 123;
-static const NSInteger kDFHumanVsAIButtonTag      = 124;
-static const NSInteger kDFAIVsHumanTag            = 125;
+typedef NS_ENUM(NSUInteger, DFGameType)
+{
+    DFGameHumavVsHuman,
+    DFGameHumanVsAI,
+    DFGameAIVsHuman,
+};
 
 @interface DFConstance : NSObject
 
