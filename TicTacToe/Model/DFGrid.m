@@ -99,6 +99,11 @@
     return  [self isWinner:DFGridValueO];
 }
 
+- (BOOL)isDraw
+{
+    return [self isDrawForValues:self.gridValues];
+}
+
 - (BOOL)isDrawForValues:(NSArray *)aGrid
 {
     for (NSNumber* value in aGrid)

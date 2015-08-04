@@ -30,8 +30,10 @@
         self.gameType = aGameType;
         if (self.gameType == DFGameHumanVsAI)
             self.currentGridValue = DFGridValueX;
-        else
+        else if (self.gameType == DFGameAIVsHuman)
             self.currentGridValue = DFGridValueO;
+        else if (self.gameType == DFGameHumavVsHuman)
+            self.currentGridValue = DFGridValueX;
     }
     return self;
 }

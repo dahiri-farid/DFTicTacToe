@@ -16,6 +16,7 @@
 - (BOOL)isGridEmpty;
 - (BOOL)isWinnerX;
 - (BOOL)isWinnerO;
+- (BOOL)isDraw;
 - (NSUInteger)gridSize;
 
 @end

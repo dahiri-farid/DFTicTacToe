@@ -55,8 +55,12 @@
                                 multiplier:1.0f
                                   constant:0.0f];
     
+    
     if (self.gameType == DFGameAIVsHuman)
-        [self performSelector:@selector(performComputerMove) withObject:nil afterDelay:0.3f];
+    {
+        self.view.userInteractionEnabled = NO;
+        [self performSelector:@selector(performFirstComputerMove) withObject:nil afterDelay:0.3f];
+    }
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -126,15 +130,11 @@
     }];
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)performFirstComputerMove
+{
+    self.view.userInteractionEnabled = YES;
+    [self performComputerMove];
 }
-*/
 
 - (void)performComputerMove
 {
@@ -216,6 +216,10 @@
     else if (self.gridModel.isWinnerO)
     {
         [self showAlertControllerWithTitle:@"Victory" message:@"O wins"];
+    }
+    else if (self.gridModel.isDraw)
+    {
+        [self showAlertControllerWithTitle:@"Draw" message:@"Nobody wins"];
     }
     
     [self udpdateGridButtons];
