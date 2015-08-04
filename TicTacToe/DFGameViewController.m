@@ -9,6 +9,7 @@
 #import "DFGameViewController.h"
 #import "DFGameController.h"
 #import "DFGrid.h"
+#import "CALayer+ScalingAnimation.h"
 
 @interface DFGameViewController ()
 
@@ -58,8 +59,7 @@
     
     if (self.gameType == DFGameAIVsHuman)
     {
-        self.view.userInteractionEnabled = NO;
-        [self performSelector:@selector(performFirstComputerMove) withObject:nil afterDelay:0.3f];
+        [self performDelayedComputerMove];
     }
 }
 
@@ -130,13 +130,16 @@
     }];
 }
 
-- (void)performFirstComputerMove
+- (void)performDelayedComputerMove
 {
-    self.view.userInteractionEnabled = YES;
-    [self performComputerMove];
+    if (self.gameController.gameFinished == YES)
+        return;
+    
+    self.view.userInteractionEnabled = NO;
+    [self performSelector:@selector(makeComputerMove) withObject:nil afterDelay:0.3f];
 }
 
-- (void)performComputerMove
+- (void)makeComputerMove
 {
     __block NSUInteger move = 0;
     if (self.gameType == DFGameAIVsHuman)
@@ -144,7 +147,7 @@
         move = [self.gridModel makeBestMoveForValue:DFGridValueX];
        
         UIButton* btn = [self buttonForTag:[self buttonTagFromGridID:move]];
-        [btn setTitle:@"X" forState:UIControlStateNormal];
+        [self drawMarker:DFGridValueX forButton:btn];
         [self.gridModel putGridValue:DFGridValueX atIndex:move];
     }
     else if (self.gameType == DFGameHumanVsAI)
@@ -152,11 +155,13 @@
         move = [self.gridModel makeBestMoveForValue:DFGridValueO];
         
         UIButton* btn = [self buttonForTag:[self buttonTagFromGridID:move]];
-        [btn setTitle:@"O" forState:UIControlStateNormal];
+        [self drawMarker:DFGridValueO forButton:btn];
         [self.gridModel putGridValue:DFGridValueO atIndex:move];
     }
     
-    [self udpdateGridButtons];
+    [self updateGameFlow];
+
+    self.view.userInteractionEnabled = YES;
 }
 
 - (UIButton *)buttonForTag:(NSUInteger)aTag
@@ -175,14 +180,16 @@
         
         if (self.gameController.currentGridValue == DFGridValueX)
         {
-            [sender setTitle:@"X" forState:UIControlStateNormal];
+            [self drawMarker:DFGridValueX forButton:sender];
         }
         else
         {
-            [sender setTitle:@"O" forState:UIControlStateNormal];
+            [self drawMarker:DFGridValueO forButton:sender];
         }
         [self.gameController toggleGridValue];
         sender.userInteractionEnabled = NO;
+        
+        [self updateGameFlow];
     }
     else if (self.gameType == DFGameHumanVsAI)
     {
@@ -191,10 +198,12 @@
         
         if (self.gameController.currentGridValue == DFGridValueX)
         {
-            [sender setTitle:@"X" forState:UIControlStateNormal];
+            [self drawMarker:DFGridValueX forButton:sender];
         }
         
-        [self performComputerMove];
+        [self updateGameFlow];
+        
+        [self performDelayedComputerMove];
     }
     else if (self.gameType == DFGameAIVsHuman)
     {
@@ -203,26 +212,13 @@
         
         if (self.gameController.currentGridValue == DFGridValueO)
         {
-            [sender setTitle:@"O" forState:UIControlStateNormal];
+            [self drawMarker:DFGridValueO forButton:sender];
         }
         
-        [self performComputerMove];
+        [self updateGameFlow];
+        
+        [self performDelayedComputerMove];
     }
-    
-    if (self.gridModel.isWinnerX)
-    {
-        [self showAlertControllerWithTitle:@"Victory" message:@"X wins"];
-    }
-    else if (self.gridModel.isWinnerO)
-    {
-        [self showAlertControllerWithTitle:@"Victory" message:@"O wins"];
-    }
-    else if (self.gridModel.isDraw)
-    {
-        [self showAlertControllerWithTitle:@"Draw" message:@"Nobody wins"];
-    }
-    
-    [self udpdateGridButtons];
 }
 
 - (NSUInteger)gridIDFromButtonTag:(NSUInteger)aButtonTag
@@ -254,6 +250,27 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
+- (void)updateGameFlow
+{
+    if (self.gridModel.isWinnerX)
+    {
+        self.gameController.gameFinished = YES;
+        [self showAlertControllerWithTitle:@"Victory" message:@"X wins"];
+    }
+    else if (self.gridModel.isWinnerO)
+    {
+        self.gameController.gameFinished = YES;
+        [self showAlertControllerWithTitle:@"Victory" message:@"O wins"];
+    }
+    else if (self.gridModel.isDraw)
+    {
+        self.gameController.gameFinished = YES;
+        [self showAlertControllerWithTitle:@"Draw" message:@"Nobody wins"];
+    }
+
+    [self udpdateGridButtons];
+}
+
 - (void)udpdateGridButtons
 {
     for (NSUInteger i = 0; i < self.gridModel.gridSize; ++i)
@@ -268,6 +285,103 @@
         else
             btn.userInteractionEnabled = YES;
     }
+}
+
+- (void)drawMarker:(DFGridValueType)aMarker forButton:(UIButton *)aButton
+{
+    CGSize figureSize = CGSizeMake(aButton.bounds.size.width * 0.8f,
+                                   aButton.bounds.size.height * 0.8f);
+    
+    CGPoint centerPosition = CGPointMake(CGRectGetMidX(aButton.frame),
+                                         CGRectGetMidY(aButton.frame));
+    
+    if (aMarker == DFGridValueO)
+    {
+        CAShapeLayer *circle1 = [self createCircleWithRadius:figureSize.width / 2.0f
+                                                       color:UIColor.darkGrayColor
+                                                    position:centerPosition
+                                                   fillColor:UIColor.clearColor
+                                                   lineWidth:figureSize.width * 0.1f];
+        // Add to parent layer
+        [aButton.layer addSublayer:circle1];
+        [circle1 animateScaleX:0.92f scaleY:0.92f numberOfBounces:6];
+    }
+    else
+    {
+        CAShapeLayer *cross = [self createCrossWithSize:figureSize.width
+                                                  color:UIColor.darkGrayColor
+                                               position:centerPosition
+                                              fillColor:UIColor.clearColor
+                                              lineWidth:figureSize.width * 0.1f];
+        [aButton.layer addSublayer:cross];
+        [cross animateScaleX:0.92f scaleY:0.92f numberOfBounces:6];
+    }
+}
+
+- (CAShapeLayer *)createCircleWithRadius:(CGFloat)radius
+                                   color:(UIColor *)color
+                                position:(CGPoint)position
+                               fillColor:(UIColor *)fillColor
+                               lineWidth:(CGFloat)lineWidth
+{
+    CAShapeLayer *circle = [CAShapeLayer layer];
+    // Make a circular shape
+    circle.path = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(0, 0, 2.0 * radius, 2.0 * radius)
+                                             cornerRadius:radius].CGPath;
+    // Center the shape in self.view
+    circle.position = position;
+    
+    // Configure the apperence of the circle
+    circle.fillColor = fillColor.CGColor;
+    circle.strokeColor = color.CGColor;
+    circle.lineWidth = lineWidth;
+    circle.bounds = CGRectMake(0, 0, 2.0 * radius, 2.0 * radius);
+    circle.anchorPoint = CGPointMake(0.5, 0.5);
+    return circle;
+}
+
+- (CAShapeLayer *)createCrossWithSize:(CGFloat)size
+                                   color:(UIColor *)color
+                                position:(CGPoint)position
+                               fillColor:(UIColor *)fillColor
+                               lineWidth:(CGFloat)lineWidth
+{
+    CAShapeLayer *lineFirstLayer = [CAShapeLayer layer];
+    
+    UIBezierPath *linePathFirst = [UIBezierPath bezierPath];
+    [linePathFirst moveToPoint: CGPointZero];
+    [linePathFirst addLineToPoint:CGPointMake(size, size)];
+    lineFirstLayer.path = linePathFirst.CGPath;
+    lineFirstLayer.fillColor = fillColor.CGColor;
+    lineFirstLayer.strokeColor = color.CGColor;
+    lineFirstLayer.lineWidth = lineWidth;
+    lineFirstLayer.opacity = 1.0;
+    
+    CAShapeLayer *lineSecondLayer = [CAShapeLayer layer];
+    
+    UIBezierPath *linePathSecond = [UIBezierPath bezierPath];
+    [linePathSecond moveToPoint: CGPointMake(size, 0)];
+    [linePathSecond addLineToPoint:CGPointMake(0, size)];
+    lineSecondLayer.path = linePathSecond.CGPath;
+    lineSecondLayer.fillColor = fillColor.CGColor;
+    lineSecondLayer.strokeColor = color.CGColor;
+    lineSecondLayer.lineWidth = lineWidth;
+    lineSecondLayer.opacity = 1.0;
+
+    CAShapeLayer *cross = [CAShapeLayer layer];
+    // Make a circular shape
+    // Center the shape in self.view
+    cross.position = position;
+    
+    // Configure the apperence of the circle
+    cross.fillColor = fillColor.CGColor;
+    cross.strokeColor = color.CGColor;
+    cross.lineWidth = lineWidth;
+    cross.bounds = CGRectMake(0, 0, size, size);
+//    cross.anchorPoint = CGPointMake(0.5, 0.5);
+    [cross addSublayer:lineFirstLayer];
+    [cross addSublayer:lineSecondLayer];
+    return cross;
 }
 
 @end

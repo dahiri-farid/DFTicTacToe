@@ -34,6 +34,8 @@
             self.currentGridValue = DFGridValueO;
         else if (self.gameType == DFGameHumavVsHuman)
             self.currentGridValue = DFGridValueX;
+        
+        self.gameFinished = NO;
     }
     return self;
 }

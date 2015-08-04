@@ -12,6 +12,7 @@
 
 @property (nonatomic, assign, readonly)    DFGameType  gameType;
 @property (nonatomic, assign, readonly)    DFGridValueType currentGridValue;
+@property (nonatomic, assign)              BOOL gameFinished;
 
 + (instancetype)controllerWithGameType:(DFGameType)aGameType;
 
