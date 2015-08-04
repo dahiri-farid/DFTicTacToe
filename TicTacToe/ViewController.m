@@ -13,7 +13,6 @@
 static const NSUInteger kDFHumanVsHumanButtonTag   = 123;
 static const NSUInteger kDFHumanVsAIButtonTag      = 124;
 static const NSUInteger kDFAIVsHumanButtonTag      = 125;
-static const NSUInteger kDFAboutButtonTag          = 126;
 
 @interface ViewController ()
 
@@ -71,10 +70,6 @@ static const NSUInteger kDFAboutButtonTag          = 126;
         DFGameViewController* gameVC = ((UINavigationController *)segue.destinationViewController).viewControllers[0];
         gameVC.gameType = DFGameAIVsHuman;
     }
-    //        else if (sender.tag == kDFAboutButtonTag)
-    //        {
-    //
-    //        }
 }
 
 @end

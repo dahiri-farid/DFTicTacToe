@@ -62,6 +62,9 @@
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="cQz-7a-7XI" kind="presentation" id="Cqk-mz-i8k"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
@@ -389,6 +392,62 @@
             </objects>
             <point key="canvasLocation" x="1812" y="287"/>
         </scene>
+        <!--About View Controller-->
+        <scene sceneID="jRJ-gs-mdH">
+            <objects>
+                <viewController id="PCt-wx-tKu" customClass="DFAboutViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qdv-V1-fZW"/>
+                        <viewControllerLayoutGuide type="bottom" id="Vks-12-3X2"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="3Q1-6d-lgp">
+                        <rect key="frame" x="0.0" y="64" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4Hv-TW-tAL">
+                                <rect key="frame" x="16" y="52" width="568" height="540"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <mutableString key="text">The MIT License (MIT)
+
+Copyright (c) 2015 Farid
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+</mutableString>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="4Hv-TW-tAL" firstAttribute="leading" secondItem="3Q1-6d-lgp" secondAttribute="leadingMargin" id="0rH-Q1-9cf"/>
+                            <constraint firstItem="4Hv-TW-tAL" firstAttribute="top" secondItem="qdv-V1-fZW" secondAttribute="bottom" constant="8" id="F0B-mH-nK1"/>
+                            <constraint firstItem="Vks-12-3X2" firstAttribute="top" secondItem="4Hv-TW-tAL" secondAttribute="bottom" constant="8" id="Yqq-cO-0Ab"/>
+                            <constraint firstItem="4Hv-TW-tAL" firstAttribute="trailing" secondItem="3Q1-6d-lgp" secondAttribute="trailingMargin" id="z9w-F2-H42"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="XJk-rp-pHb"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2BJ-6a-UAs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3616" y="202"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="88Z-au-sWL">
             <objects>
@@ -410,7 +469,30 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iZA-jE-yyV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1000" y="287"/>
+            <point key="canvasLocation" x="1122" y="254"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="JaE-03-dcM">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="cQz-7a-7XI" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="RTs-0d-mTI">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.72336632010000002" green="1" blue="0.72336632010000002" alpha="1" colorSpace="deviceRGB"/>
+                        <textAttributes key="titleTextAttributes">
+                            <fontDescription key="fontDescription" name="HelveticaNeue-CondensedBlack" family="Helvetica Neue" pointSize="18"/>
+                            <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="PCt-wx-tKu" kind="relationship" relationship="rootViewController" id="cMx-Gc-1fQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PGN-vo-LmZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2844" y="265"/>
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
