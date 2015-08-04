@@ -17,9 +17,9 @@ typedef NS_ENUM(NSUInteger, DFGameType)
 
 typedef NS_ENUM(NSUInteger, DFGridValueType)
 {
-    DFGridValueEmpty,
-    DFGridValueX,
-    DFGridValueO,
+    DFGridValueEmpty = 0,
+    DFGridValueX = 1,
+    DFGridValueO = -1,
 };
 
 @interface DFConstance : NSObject

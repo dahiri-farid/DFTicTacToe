@@ -11,10 +11,12 @@
 @interface DFGrid : NSObject
 
 - (DFGridValueType)gridValueAtIndex:(NSUInteger)aIndex;
-- (void)putGridValue:(DFGridValueType)aValue atIndex:(NSUInteger)aIndex;
-- (void)makeBestMoveForValue:(DFGridValueType)aValue;
+- (NSUInteger)putGridValue:(DFGridValueType)aValue atIndex:(NSUInteger)aIndex;
+- (NSUInteger)makeBestMoveForValue:(DFGridValueType)aValue;
 - (BOOL)isGridEmpty;
 - (BOOL)isWinnerX;
-- (BOOL)isWinnerY;
+- (BOOL)isWinnerO;
+- (BOOL)isDraw;
+- (NSUInteger)gridSize;
 
 @end

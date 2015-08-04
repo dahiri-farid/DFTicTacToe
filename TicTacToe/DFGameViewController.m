@@ -54,6 +54,9 @@
                                  attribute:NSLayoutAttributeCenterX
                                 multiplier:1.0f
                                   constant:0.0f];
+    
+    if (self.gameType == DFGameAIVsHuman)
+        [self performSelector:@selector(performComputerMove) withObject:nil afterDelay:0.3f];
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -133,37 +136,99 @@
 }
 */
 
+- (void)performComputerMove
+{
+    __block NSUInteger move = 0;
+    if (self.gameType == DFGameAIVsHuman)
+    {
+        move = [self.gridModel makeBestMoveForValue:DFGridValueX];
+       
+        UIButton* btn = [self buttonForTag:[self buttonTagFromGridID:move]];
+        [btn setTitle:@"X" forState:UIControlStateNormal];
+        [self.gridModel putGridValue:DFGridValueX atIndex:move];
+    }
+    else if (self.gameType == DFGameHumanVsAI)
+    {
+        move = [self.gridModel makeBestMoveForValue:DFGridValueO];
+        
+        UIButton* btn = [self buttonForTag:[self buttonTagFromGridID:move]];
+        [btn setTitle:@"O" forState:UIControlStateNormal];
+        [self.gridModel putGridValue:DFGridValueO atIndex:move];
+    }
+    
+    [self udpdateGridButtons];
+}
+
+- (UIButton *)buttonForTag:(NSUInteger)aTag
+{
+    return (UIButton *)[[self.gridView viewWithTag:aTag + 100] viewWithTag:aTag];
+}
+
 #pragma mark - User Interaction
 
 - (IBAction)didPressOnGrid:(UIButton *)sender
 {
-    [self.gridModel putGridValue:self.gameController.currentGridValue
-                         atIndex:[self gridIDFromButtonTag:sender.tag]];
-    
-    if (self.gameController.currentGridValue == DFGridValueX)
+    if (self.gameType == DFGameHumavVsHuman)
     {
-        [sender setTitle:@"X" forState:UIControlStateNormal];
+        [self.gridModel putGridValue:self.gameController.currentGridValue
+                             atIndex:[self gridIDFromButtonTag:sender.tag]];
+        
+        if (self.gameController.currentGridValue == DFGridValueX)
+        {
+            [sender setTitle:@"X" forState:UIControlStateNormal];
+        }
+        else
+        {
+            [sender setTitle:@"O" forState:UIControlStateNormal];
+        }
+        [self.gameController toggleGridValue];
+        sender.userInteractionEnabled = NO;
     }
-    else
+    else if (self.gameType == DFGameHumanVsAI)
     {
-        [sender setTitle:@"O" forState:UIControlStateNormal];
+        [self.gridModel putGridValue:self.gameController.currentGridValue
+                             atIndex:[self gridIDFromButtonTag:sender.tag]];
+        
+        if (self.gameController.currentGridValue == DFGridValueX)
+        {
+            [sender setTitle:@"X" forState:UIControlStateNormal];
+        }
+        
+        [self performComputerMove];
     }
-    [self.gameController toggleGridValue];
-    sender.userInteractionEnabled = NO;
+    else if (self.gameType == DFGameAIVsHuman)
+    {
+        [self.gridModel putGridValue:self.gameController.currentGridValue
+                             atIndex:[self gridIDFromButtonTag:sender.tag]];
+        
+        if (self.gameController.currentGridValue == DFGridValueO)
+        {
+            [sender setTitle:@"O" forState:UIControlStateNormal];
+        }
+        
+        [self performComputerMove];
+    }
     
     if (self.gridModel.isWinnerX)
     {
         [self showAlertControllerWithTitle:@"Victory" message:@"X wins"];
     }
-    else if (self.gridModel.isWinnerY)
+    else if (self.gridModel.isWinnerO)
     {
         [self showAlertControllerWithTitle:@"Victory" message:@"O wins"];
     }
+    
+    [self udpdateGridButtons];
 }
 
 - (NSUInteger)gridIDFromButtonTag:(NSUInteger)aButtonTag
 {
     return aButtonTag - 100;
+}
+
+- (NSUInteger)buttonTagFromGridID:(NSUInteger)aGridID
+{
+    return aGridID + 100;
 }
 
 - (void)showAlertControllerWithTitle:(NSString *)aTitle message:(NSString *)aMessage
@@ -178,11 +243,27 @@
                              style:UIAlertActionStyleCancel
                            handler:^(UIAlertAction *action)
      {
-         [weakSelf dismissViewControllerAnimated:alert completion:nil];
+         [weakSelf dismissViewControllerAnimated:YES completion:nil];
      }];
     [alert addAction:action];
     
     [self presentViewController:alert animated:YES completion:nil];
+}
+
+- (void)udpdateGridButtons
+{
+    for (NSUInteger i = 0; i < self.gridModel.gridSize; ++i)
+    {
+        DFGridValueType gridValue = [self.gridModel gridValueAtIndex:i];
+        UIButton* btn = [self buttonForTag:[self buttonTagFromGridID:i]];
+        if (gridValue != DFGridValueEmpty)
+        {
+            
+            btn.userInteractionEnabled = NO;
+        }
+        else
+            btn.userInteractionEnabled = YES;
+    }
 }
 
 @end
