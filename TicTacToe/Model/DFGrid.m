@@ -116,27 +116,15 @@
 
 - (BOOL)isWinner:(DFGridValueType)aValue
 {
-    for (NSArray* solution in self.solutions)
-    {
-        NSUInteger matchesCount = 0;
-        for (NSNumber* index in solution)
-        {
-            DFGridValueType valueType = [self.gridValues[index.integerValue] integerValue];
-            
-            if (valueType == aValue)
-                ++matchesCount;
-        }
-        if (matchesCount == self.sideLength)
-            return YES;
-    }
-    return NO;
+    return [self isWinner:aValue forGridValues:self.gridValues];
 }
                
 - (BOOL)isWinner:(DFGridValueType)aValue forGridValues:(NSArray *)aGrid
 {
-    NSUInteger matchesCount = 0;
+
     for (NSArray* solution in self.solutions)
     {
+        NSUInteger matchesCount = 0;
         for (NSNumber* index in solution)
         {
             DFGridValueType valueType = [aGrid[index.integerValue] integerValue];
@@ -146,8 +134,6 @@
         }
         if (matchesCount == self.sideLength)
             return YES;
-        else
-            matchesCount = 0;
     }
     return NO;
 }
