@@ -55,42 +55,14 @@
 
 - (NSUInteger)makeBestMoveForValue:(DFGridValueType)aValue
 {
-//    DFGridValueType opponentValue = aValue == DFGridValueO ? DFGridValueX : DFGridValueO;
-//
-//    NSMutableArray* opponentMoves = NSMutableArray.array;
-//    for (NSArray* possibleSolution in self.solutions)
-//    {
-//        NSUInteger opponentMovesCount = 0;
-//        for (NSNumber* index in possibleSolution)
-//        {
-//            DFGridValueType gridValue = [self.gridValues[index.integerValue] integerValue];
-//            if (gridValue == opponentValue)
-//            {
-//                ++opponentMovesCount;
-//            }
-//        }
-//        if (opponentMovesCount > 1)
-//            [opponentMoves addObject:@(opponentMovesCount)];
-//    }
-//    
-//    if (opponentMoves.count == 0)
-//        return [self randomMoveForValue:aValue];
-//    
-//    NSNumber* maxMoves = [opponentMoves valueForKeyPath:@"@max.self"];
-//    NSUInteger indexOfMaxMoves = [opponentMoves indexOfObject:maxMoves];
-//    
-//    NSArray* solution = self.solutions[indexOfMaxMoves];
-//    
-//    for (NSUInteger i = 0; i < solution.count; ++i)
-//    {
-//        NSUInteger solutionIndex = [solution[i] integerValue];
-//        DFGridValueType valueType = [self.gridValues[solutionIndex] integerValue];
-//        if (valueType == DFGridValueEmpty)
-//            return solutionIndex;
-//    }
-//    
-//    return 0;
-    return  [self negamaxForMarker:aValue withBoard:self.gridValues.mutableCopy depth:1 alpha:-10000 beta:10000];
+    if (self.isGridEmpty)
+    {
+        return [self randomMoveForValue:aValue];
+    }
+    else
+    {
+        return  [self negamaxForMarker:aValue withBoard:self.gridValues.mutableCopy depth:1 alpha:-10000 beta:10000];
+    }
 }
 
 - (BOOL)isGridEmpty
@@ -116,41 +88,6 @@
     
     return randomMove;
 }
-
-//- (void)recursiveSearch:(NSMutableArray *)aGrid
-//                 player:(DFGridValueType)aPlayer
-//          bestSolutions:(NSMutableArray *)bestSolutions
-//{
-//    NSNumber *score;
-//    NSNumber *move;
-//    for (NSUInteger i = 0; i < self.gridValues.count; ++i)
-//    {
-//        if ([aGrid[i] integerValue] == DFGridValueEmpty)
-//        {
-//            aGrid[i] = @(aPlayer);
-//            DFGridValueType currentValue = (aPlayer == DFGridValueO) ? DFGridValueX : DFGridValueO;
-//
-//            if ([self isWinner:DFGridValueO forGridValues:aGrid] ||
-//                [self isWinner:DFGridValueX forGridValues:aGrid])
-//            {
-//                score = (aPlayer == DFGridValueX ?
-//                         [NSNumber numberWithInt:[depth intValue] * -1] :
-//                         [NSNumber numberWithInt:[depth intValue]]);
-//            }
-//            else
-//            {
-//                
-//            }
-//            
-//            if (aPlayer == DFGridValueX ? [score intValue] > [bestScore intValue] :
-//                [score intValue] < [bestScore intValue])
-//            {
-//                bestScore = score;
-//                bestMove = move;
-//            }
-//        }
-//    }
-//}
 
 - (BOOL)isWinnerX
 {
